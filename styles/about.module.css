@@ -1,0 +1,81 @@
+/* Add a soft gradient background */
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(
+    to bottom,
+    #f8f9fa,
+    #e9ecef
+  ); /* Light gray gradient */
+  min-height: 100vh;
+}
+
+/* Card styling */
+.aboutCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+  text-align: left;
+  position: relative;
+  transform: translateX(
+    calc(-10px + 20px * var(--offset))
+  ); /* Slight misalignment */
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Slight offset for a non-uniform look */
+.aboutCard:nth-child(odd) {
+  --offset: -1;
+}
+
+.aboutCard:nth-child(even) {
+  --offset: 1;
+}
+
+/* Hover effect to make the cards interactive */
+.aboutCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading styles */
+.aboutCard h1,
+.aboutCard h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #2c3e50; /* Dark gray-blue */
+}
+
+/* Text content */
+.aboutCard p,
+.aboutCard ul {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* List styling */
+.aboutCard ul {
+  list-style: none;
+  padding: 0;
+}
+
+.aboutCard ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Links */
+.aboutCard a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.aboutCard a:hover {
+  text-decoration: underline;
+}

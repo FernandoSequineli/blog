@@ -25,7 +25,7 @@ export default function Component(props) {
 
       <main className="container">
         <EntryHeader title="Welcome to the Faust Scaffold Blueprint" />
-
+        <h1>TEEEST</h1>
         <section className={style.cardGrid}>
           <Link
             href="https://faustjs.org"
@@ -58,8 +58,8 @@ export default function Component(props) {
           >
             <h3>Deploy →</h3>
             <p>
-              Deploy your Faust.js app to Headless Platform along with your WordPress
-              instance.
+              Deploy your Faust.js app to Headless Platform along with your
+              WordPress instance.
             </p>
           </Link>
 

@@ -1,9 +1,15 @@
+.header {
+  background-color: #3498db; /* Blue background */
+  padding: 1rem;
+  color: white;
+}
+
 .header > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .siteTitle {

@@ -1,4 +1,6 @@
 .footer {
+  background-color: #3498db; /* Blue gray for contrast */
+  color: white;
   text-align: center;
   padding: 2rem;
   border-top: 1px solid #e1e1e1;
@@ -6,5 +8,10 @@
 }
 
 .footer a {
-  color: royalblue;
+  color: #07099b; /* Teal color for a nice contrast */
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
