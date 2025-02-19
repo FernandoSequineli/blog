@@ -1,9 +1,21 @@
-import Link from "next/link";
 import { useQuery, gql } from "@apollo/client";
+import Link from "next/link";
+import Header from "../components/header";
+import Footer from "../components/footer";
 import styles from "../styles/blog.module.css";
 
-const GET_POSTS = gql`
-  query getPosts {
+const GET_BLOG_DATA = gql`
+  query getBlogData {
+    generalSettings {
+      title
+    }
+    primaryMenuItems: menuItems(where: { location: PRIMARY }) {
+      nodes {
+        id
+        uri
+        label
+      }
+    }
     posts {
       nodes {
         title
@@ -16,20 +28,28 @@ const GET_POSTS = gql`
 `;
 
 export default function Blog() {
-  const { loading, error, data } = useQuery(GET_POSTS);
+  const { loading, error, data } = useQuery(GET_BLOG_DATA);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error! {error.message}</p>;
 
   return (
-    <div className={styles.blogContainer}>
-      {data.posts.nodes.map((post) => (
-        <div key={post.databaseId} className={styles.blogCard}>
-          <Link href={post.uri}>
-            <h2>{post.title}</h2>
-          </Link>
-          <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-        </div>
-      ))}
-    </div>
+    <>
+      <Header
+        siteTitle={data.generalSettings.title}
+        menuItems={data.primaryMenuItems.nodes}
+      />
+      <div className={styles.blogContainer}>
+        {data.posts.nodes.map((post) => (
+          <div key={post.databaseId} className={styles.blogCard}>
+            <Link href={post.uri}>
+              <h2>{post.title}</h2>
+            </Link>
+            <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+          </div>
+        ))}
+      </div>
+      <Footer />
+    </>
   );
 }

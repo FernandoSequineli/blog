@@ -2,7 +2,6 @@ import { gql } from "@apollo/client";
 import Head from "next/head";
 import Link from "next/link";
 import Header from "../components/header";
-import EntryHeader from "../components/entry-header";
 import Footer from "../components/footer";
 import style from "../styles/front-page.module.css";
 
@@ -14,7 +13,7 @@ export default function Component(props) {
   return (
     <>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{siteTitle} - Home</title>
       </Head>
 
       <Header
@@ -23,57 +22,35 @@ export default function Component(props) {
         menuItems={menuItems}
       />
 
-      <main className="container">
-        <EntryHeader title="Welcome to the Faust Scaffold Blueprint" />
-        <h1>TEEEST</h1>
-        <section className={style.cardGrid}>
-          <Link
-            href="https://faustjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={style.card}
-          >
-            <h3>Documentation →</h3>
-            <p>
-              Learn more about Faust.js through guides and reference
-              documentation.
-            </p>
+      <main className={style.hero}>
+        <div className={style.heroContent}>
+          <h1>Welcome to {siteTitle}</h1>
+          <p>{siteDescription}</p>
+          <Link href="/blog" className={style.ctaButton}>
+            Read Our Blog
           </Link>
-
-          <Link
-            href="https://my.wpengine.com/atlas#/create/blueprint"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={style.card}
-          >
-            <h3>Blueprints →</h3>
-            <p>Explore production ready Faust.js starter projects.</p>
-          </Link>
-
-          <Link
-            href="https://wpengine.com/atlas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={style.card}
-          >
-            <h3>Deploy →</h3>
-            <p>
-              Deploy your Faust.js app to Headless Platform along with your
-              WordPress instance.
-            </p>
-          </Link>
-
-          <Link
-            href="https://github.com/wpengine/faustjs"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={style.card}
-          >
-            <h3>Contribute →</h3>
-            <p>Visit us on GitHub to explore how you can contribute!</p>
-          </Link>
-        </section>
+        </div>
       </main>
+
+      <section className={style.features}>
+        <div className={style.featureCard}>
+          <h2>Quality Content</h2>
+          <p>
+            We provide well-researched and engaging articles on various topics.
+          </p>
+        </div>
+        <div className={style.featureCard}>
+          <h2>Expert Team</h2>
+          <p>Our team consists of skilled professionals in different fields.</p>
+        </div>
+        <div className={style.featureCard}>
+          <h2>Stay Updated</h2>
+          <p>
+            Subscribe to get the latest articles and news straight to your
+            inbox.
+          </p>
+        </div>
+      </section>
 
       <Footer />
     </>
