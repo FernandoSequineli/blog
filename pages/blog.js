@@ -28,7 +28,9 @@ const GET_BLOG_DATA = gql`
 `;
 
 export default function Blog() {
-  const { loading, error, data } = useQuery(GET_BLOG_DATA);
+  const { loading, error, data } = useQuery(GET_BLOG_DATA, {
+    fetchPolicy: "network-only", // Forces fetching new data instead of using cache
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error! {error.message}</p>;
@@ -42,9 +44,10 @@ export default function Blog() {
       <div className={styles.blogContainer}>
         {data.posts.nodes.map((post) => (
           <div key={post.databaseId} className={styles.blogCard}>
-            <Link href={post.uri}>
+            <Link href={`/posts${post.uri}`}>
               <h2>{post.title}</h2>
             </Link>
+
             <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
           </div>
         ))}
